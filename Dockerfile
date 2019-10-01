@@ -41,6 +41,12 @@ RUN apt-get -qqy update && \
     docker --version && kubectl version --client && \
     rm -rf ~/.cache /var/lib/apt/lists/*
 
+RUN wget -q https://github.com/instrumenta/kubeval/releases/download/0.14.0/kubeval-linux-amd64.tar.gz && \
+    tar xf kubeval-linux-amd64.tar.gz && \
+    mv kubeval /usr/local/bin && \
+    rm kubeval-linux-amd64.tar.gz && \
+    kubeval --version
+
 USER circleci
 
 RUN gem install kubernetes-deploy ejson
