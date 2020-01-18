@@ -1,4 +1,4 @@
-FROM circleci/ruby:2.6.2
+FROM circleci/ruby:2.6.4
 ARG CLOUD_SDK_VERSION=232.0.0
 ENV CLOUD_SDK_VERSION=$CLOUD_SDK_VERSION
 
@@ -49,4 +49,4 @@ RUN wget -q https://github.com/instrumenta/kubeval/releases/download/0.14.0/kube
 
 USER circleci
 
-RUN gem install kubernetes-deploy ejson
+RUN gem install bundler krane ejson
