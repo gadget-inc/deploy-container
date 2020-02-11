@@ -47,6 +47,11 @@ RUN wget -q https://github.com/instrumenta/kubeval/releases/download/0.14.0/kube
     rm kubeval-linux-amd64.tar.gz && \
     kubeval --version
 
+RUN wget -q https://downloads.sentry-cdn.com/sentry-cli/1.50.0/sentry-cli-Linux-x86_64 && \
+    mv sentry-cli-Linux-x86_64 /usr/local/bin/sentry-cli && \
+    chmod +x /usr/local/bin/sentry-cli && \
+    sentry-cli --version
+
 USER circleci
 
 RUN gem install bundler krane ejson
