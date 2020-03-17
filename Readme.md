@@ -4,4 +4,4 @@ In order to make deploys go faster, we use this container that has the tools req
 
 ### Building
 
-This is built by Docker Hub and stored there so it's public. This is necessasry so that Circle can pull it and run it.
+This is built by Docker Hub and stored there so it's public. This is necessary so that Circle can pull it and run it.

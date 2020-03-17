@@ -54,4 +54,6 @@ RUN wget -q https://downloads.sentry-cdn.com/sentry-cli/1.50.0/sentry-cli-Linux-
 
 USER circleci
 
+COPY VERSION /
+
 RUN gem install bundler krane ejson
