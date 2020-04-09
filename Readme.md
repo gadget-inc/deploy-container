@@ -4,12 +4,10 @@ In order to make deploys go faster, we use this container that has the tools req
 
 ### Building
 
-This is built by automatically by Docker Hub and stored there so it's public. This is necessary so that Circle can pull it and run it.
-
-If you want to build it manually, you can run this process:
-
+Run like so:
 
 ```
-docker build -t superpro/deploy-container:latest .
-docker push superpro/deploy-container:latest
+./build.sh
 ```
+
+We build one image per ruby version in use by apps this thing supports, and tag each image with the ruby version so each app can be upgraded piecemeal.
