@@ -1,7 +1,6 @@
-ARG BASE_IMAGE=circleci/ruby:2.7.1
-FROM $BASE_IMAGE
+FROM ruby:2.7
 
-ARG CLOUD_SDK_VERSION=232.0.0
+ARG CLOUD_SDK_VERSION=304.0.0
 ENV CLOUD_SDK_VERSION=$CLOUD_SDK_VERSION
 
 USER root
@@ -41,22 +40,20 @@ RUN apt-get -qqy update && \
     gcloud config set component_manager/disable_update_check true && \
     gcloud config set metrics/environment github_docker_image && \
     gcloud --version && \
-    docker --version && kubectl version --client && \
+    kubectl version --client && \
     rm -rf ~/.cache /var/lib/apt/lists/*
 
-RUN wget -q https://github.com/instrumenta/kubeval/releases/download/0.14.0/kubeval-linux-amd64.tar.gz && \
+RUN wget -q https://github.com/instrumenta/kubeval/releases/download/0.15.0/kubeval-linux-amd64.tar.gz && \
     tar xf kubeval-linux-amd64.tar.gz && \
     mv kubeval /usr/local/bin && \
     rm kubeval-linux-amd64.tar.gz && \
     kubeval --version
 
-RUN wget -q https://downloads.sentry-cdn.com/sentry-cli/1.50.0/sentry-cli-Linux-x86_64 && \
+RUN wget -q https://downloads.sentry-cdn.com/sentry-cli/1.55.1/sentry-cli-Linux-x86_64 && \
     mv sentry-cli-Linux-x86_64 /usr/local/bin/sentry-cli && \
     chmod +x /usr/local/bin/sentry-cli && \
     sentry-cli --version
 
-USER circleci
+RUN gem install --no-document bundler krane ejson
 
 COPY VERSION /
-
-RUN gem install bundler krane ejson

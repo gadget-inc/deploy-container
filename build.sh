@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 set -ex
 
-docker build --build-arg BASE_IMAGE=circleci/ruby:2.7.1 -t gadgetinc/deploy-container:2.7.1 .
-docker push gadgetinc/deploy-container:2.7.1
+export TAG=$(cat VERSION)
+docker build -t gadgetinc/deploy-container:$TAG .
+docker tag gadgetinc/deploy-container:$TAG gadgetinc/deploy-container:latest
+docker push gadgetinc/deploy-container:$TAG
+docker push gadgetinc/deploy-container:latest
