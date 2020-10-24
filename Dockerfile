@@ -54,6 +54,10 @@ RUN wget -q https://downloads.sentry-cdn.com/sentry-cli/1.55.1/sentry-cli-Linux-
     chmod +x /usr/local/bin/sentry-cli && \
     sentry-cli --version
 
-RUN gem install --no-document bundler krane ejson
+COPY .gemrc $HOME/.gemrc
+
+RUN gem install --no-document bundler
+RUN gem install ejson
+RUN gem install krane -v 2.1.1 && git clone https://github.com/airhorns/krane.git && cd krane && git checkout frontendconfig && bundle && bundle exec rake install && cd .. && rm -rf krane
 
 COPY VERSION /
