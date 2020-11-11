@@ -56,11 +56,7 @@ RUN wget -q https://downloads.sentry-cdn.com/sentry-cli/1.55.1/sentry-cli-Linux-
 
 
 COPY .gemrc $HOME/.gemrc
-RUN gem install --no-document bundler ejson
-
-# Bungus to allow us to run a non-released version of krane with support for newer GKEs
-RUN git clone https://github.com/airhorns/krane.git /krane && cd /krane && git checkout frontendconfig && bundle install --binstubs --without=development && rm -f /usr/local/bundle/bin/krane
-COPY krane-wrapper /usr/local/bin/krane
+RUN gem install --no-document bundler ejson krane
 
 RUN ejson -v
 RUN krane version
