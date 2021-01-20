@@ -57,7 +57,7 @@ RUN wget -q https://downloads.sentry-cdn.com/sentry-cli/1.55.1/sentry-cli-Linux-
 
 COPY .gemrc $HOME/.gemrc
 RUN gem install --no-document bundler ejson krane && \
-   ejson -v && \
-   krane version
+    krane version && \
+    ejson -v
 
 COPY VERSION /
