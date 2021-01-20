@@ -25,7 +25,7 @@ RUN apt-get -qqy update && \
     curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - && \
     apt-get update && \
     apt-get install --no-install-recommends -y google-cloud-sdk=${CLOUD_SDK_VERSION}-0 \
-        # Disabled SDK elements because we're not using them at Superpro to deploy
+        # Disabled SDK elements because we're not using them at Gadget to deploy
         # google-cloud-sdk-app-engine-python=${CLOUD_SDK_VERSION}-0 \
         # google-cloud-sdk-app-engine-python-extras=${CLOUD_SDK_VERSION}-0 \
         # google-cloud-sdk-app-engine-java=${CLOUD_SDK_VERSION}-0 \
