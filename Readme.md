@@ -11,3 +11,11 @@ Run like so:
 ```
 
 We build one image per ruby version in use by apps this thing supports, and tag each image with the ruby version so each app can be upgraded piecemeal.
+
+### Testing
+
+Run like so:
+
+```
+docker run -it gadgetinc/deploy-container:latest bash
+```
